@@ -1,0 +1,11 @@
+{
+ "_note": "AI stock photos generated in Higgsfield on 2026-10-22. The fetch-photos workflow downloads and converts them into assets/img/. Replace with Maggie's real work (with client consent) when available.",
+ "her-hero":    {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_488c493c-a72b-42df-982e-cd539fe3444e.png", "width": 1800},
+ "her-brows":   {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_93c54eae-2e6d-4d1d-b7ad-52bd7f2ac8d3.png", "width": 1100},
+ "her-lashlift":{"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192728_20d22514-67fe-476d-acfe-da349dde7aca.png", "width": 1100},
+ "his-hero":    {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_47792040-2279-47df-9ea7-b75774352de5.png", "width": 1800},
+ "his-brows":   {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_00a26ac3-defb-41d0-9428-a8e419931b71.png", "width": 1100},
+ "studio":      {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_373507c4-2f63-4d8f-9a88-6f9dcc09a10d.png", "width": 1800},
+ "facial":      {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_aa5934f0-a511-4133-9c2f-f7dba18b3425.png", "width": 1100},
+ "his-studio":  {"url": "https://d8j0ntlcm91z4.cloudfront.net/user_3KgXda7SL7YUF71V4lYOP2MPxgt/hf_20261022_192727_57d4347f-b714-4e8f-a77d-8301dfc774f0.png", "width": 1300}
+}
