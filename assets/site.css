@@ -179,8 +179,12 @@ main{padding:0 20px}
   .greet{display:none}
 }
 @media (max-width:1199px){ .rail-only{display:none} .top .hello{display:none} }
+@media (max-width:767px){
+  .hero{display:block;min-height:0;background-color:var(--card);background-size:100% auto;background-position:top center;padding-top:50%;box-shadow:var(--shadow)}
+  .hero::before{background:linear-gradient(180deg,transparent 34%,var(--card) 52%)}
+  .hero .in,.hero .in[class]{max-width:none;padding:0 20px 22px}
+}
 @media (max-width:420px){
-  .hero .in{max-width:72%;padding:20px 18px}
   .hero h2{font-size:30px}
   .svc-grid{gap:10px}
 }
