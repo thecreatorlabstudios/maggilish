@@ -5,6 +5,11 @@
   function set(side,save){
     root.setAttribute('data-side',side);
     document.querySelectorAll('.toggle button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.side===side));});
+    // Only the visible theme owns #services, so category links scroll correctly.
+    document.querySelectorAll('.sec-h[id^="services"]').forEach(function(h){
+      var owner=h.closest('.for-her')?'her':'his';
+      h.id=owner===side?'services':'services-'+owner;
+    });
     var meta=document.querySelector('meta[name="theme-color"]'); if(meta) meta.content=side==='his'?'#151311':'#F5EEE6';
     if(save){try{localStorage.setItem('maggilish-side',side);}catch(e){}}
   }

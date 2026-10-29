@@ -286,3 +286,7 @@ h1,h2,h3{text-wrap:balance}
   .hero h2{font-size:34px}
   .svc-grid,.prod-grid{grid-template-columns:1fr}
 }
+
+/* Keep supporting hero copy on the quiet part of the photograph. */
+.hero p{max-width:30ch;font-weight:400}
+@media(min-width:768px){.hero .in{min-width:0}.hero p{max-width:25ch}}
