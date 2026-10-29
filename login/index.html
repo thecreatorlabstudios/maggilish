@@ -34,7 +34,7 @@ main{padding:48px 28px;display:flex;align-items:center;justify-content:center}.p
 <p class="error" id="error" role="alert" hidden>That username or password doesn’t match. Please try again.</p>
 <button type="submit" class="primary">Sign in <span aria-hidden="true">&nbsp; →</span></button>
 </form>
-<a class="back" href="/">← Back to the website</a><p class="note">Demo preview only. This page does not secure private information or connect to a real account. Use demo credentials only.</p>
+<p class="note">Demo preview only. This page does not secure private information or connect to a real account. Use demo credentials only.</p>
 </section>
 <section class="panel" id="welcome-view" aria-labelledby="welcome-title" hidden>
 <span class="badge">Studio preview</span><h1 id="welcome-title" tabindex="-1">Welcome, Maggie.</h1><p class="intro">Your space to make beautiful things happen.</p>
@@ -50,12 +50,13 @@ main{padding:48px 28px;display:flex;align-items:center;justify-content:center}.p
   form.addEventListener('submit',function(event){
     event.preventDefault();
     if(user.value.trim()==='Maggie' && pass.value==='MaggieWins2027!'){
+      try{sessionStorage.setItem('maggilish-demo-access','yes');}catch(e){}
       error.hidden=true;login.hidden=true;welcome.hidden=false;pass.value='';document.getElementById('welcome-title').focus();
     }else{error.hidden=false;pass.setAttribute('aria-invalid','true');pass.setAttribute('aria-describedby','error');pass.focus();}
   });
   pass.addEventListener('input',function(){error.hidden=true;pass.removeAttribute('aria-invalid');pass.removeAttribute('aria-describedby');});
   show.addEventListener('click',function(){var visible=pass.type==='password';pass.type=visible?'text':'password';show.textContent=visible?'Hide':'Show';show.setAttribute('aria-pressed',String(visible));});
-  document.getElementById('logout').addEventListener('click',function(){welcome.hidden=true;login.hidden=false;form.reset();pass.type='password';show.textContent='Show';show.setAttribute('aria-pressed','false');user.focus();});
+  document.getElementById('logout').addEventListener('click',function(){try{sessionStorage.removeItem('maggilish-demo-access');}catch(e){}welcome.hidden=true;login.hidden=false;form.reset();pass.type='password';show.textContent='Show';show.setAttribute('aria-pressed','false');user.focus();});
 })();
 </script>
 </body>

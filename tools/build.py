@@ -75,9 +75,11 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
            '<h3>Booking opens soon</h3><p class="mute">Online booking is on the way.</p></div>')
     helpbox=''.join(help_.format(t=t,s=s) for s,t in (('her','light'),('his','dark')))
     canon=SITE+'/'+(path.replace('index.html','') if path!='index.html' else '')
+    demo_entry = "<script>/* Demo entry screen only; not a security boundary. */(function(){try{if(sessionStorage.getItem('maggilish-demo-access')==='yes')return;}catch(e){}window.location.replace('/login/');})();</script>" if path == 'index.html' else ''
     html=f'''<!doctype html>
 <html lang="en" data-side="{side}"{f' data-force="{force}"' if force else ''}>
 <head>
+{demo_entry}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title}</title>
