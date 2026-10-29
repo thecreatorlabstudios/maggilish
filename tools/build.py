@@ -106,7 +106,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 <div class="content">
 <header class="top">
 <a class="logo" href="/" aria-label="Maggilish home"><img class="for-her" src="/assets/brand/script-light.webp" alt="Maggilish" width="103" height="38"><img class="for-his" src="/assets/brand/script-dark.webp" alt="Maggilish" width="103" height="38"></a>
-<div class="hello rail-hide"></div>
+<div class="hello rail-hide">Maggilish · Personal beauty, thoughtful care</div>
 <div class="actions">{toggle()}</div>
 </header>
 <main id="main">{body}

@@ -189,3 +189,100 @@ main{padding:0 20px}
   .svc-grid{gap:10px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* October 2026 brand refinement: the proposal's porcelain / caramel / noir
+   palette and Cormorant + Jost type remain the shared identity. */
+:root{--radius:18px}
+[data-side="her"]{--shadow:0 5px 20px rgba(75,54,33,.045)}
+[data-side="his"]{--shadow:0 5px 20px rgba(0,0,0,.16);--mute:#C9B8A8}
+body{line-height:1.6}
+h1,h2,h3{text-wrap:balance}
+.card{border:1px solid var(--line)}
+.btn{padding:14px 24px;letter-spacing:.04em}
+.btn.ghost{box-shadow:none;border:1px solid var(--line)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.lab{letter-spacing:.18em;line-height:1.6}
+.top{padding-top:24px;padding-bottom:20px}
+.top .logo img{height:auto;width:120px}
+.toggle{border:1px solid var(--line);background:transparent;padding:4px}
+.toggle button{min-height:44px;padding:9px 15px}
+.greet{padding:0 0 22px}
+.greet h1{font-size:32px;margin-top:4px}
+.hero{border:1px solid var(--line);border-radius:22px}
+.hero h2{line-height:1.04;letter-spacing:-.025em}
+.hero p{line-height:1.7;font-size:14px}
+.hero .btn{margin-top:22px;min-height:46px}
+.cats{padding:26px 0 18px;border-bottom:1px solid var(--line)}
+.cats .c{background:transparent;border:1px solid var(--line);transition:background .2s}
+.cats a:hover .c{background:var(--chip)}
+.sec-h{margin:36px 0 18px}
+.sec-h h2{font-size:30px}
+.sec-h a{color:var(--acc);min-height:44px;align-items:center}
+.svc{padding:10px;box-shadow:none}
+.svc .ph{border-radius:12px}
+.svc .body{padding:16px 6px 6px}
+.svc h3{font-size:15px;line-height:1.4}
+.svc p{line-height:1.65;margin-top:7px}
+.svc .meta{padding-top:12px;border-top:1px solid var(--line);margin-top:18px}
+.plus{width:44px;height:44px}
+.wait{padding:16px;margin-top:18px;flex-wrap:wrap}
+.wait a{min-height:44px}
+.step{padding:22px 18px;box-shadow:none}
+.step .n{font-size:34px}
+.tips-teaser{padding:22px}
+.tips-teaser li{padding:16px 0}
+.tips-teaser li .q{font-size:21px;line-height:1.25}
+.feature{border-radius:20px;border:1px solid var(--line)}
+.feature .in{padding:28px}
+.feature h2{font-size:34px}
+.promise{padding:36px 24px;border:1px solid var(--line);box-shadow:none}
+.promise h2{font-size:36px}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:32px}
+.foot img{height:auto;width:120px;margin-bottom:20px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px}
+.tabbar{border:1px solid var(--line);box-shadow:0 6px 28px rgba(37,24,22,.12);border-radius:22px}
+.tabbar a{min-height:48px}
+.cs-list .card{padding:20px}
+.cs-hero .in{padding:30px}
+.prod{box-shadow:none}
+.prod h3{padding:15px 6px 0}
+.prod p{padding:4px 6px 12px}
+@media(min-width:768px){
+  .hero .in{padding:36px;max-width:60%}
+  .hero h2{font-size:48px}
+  .hero{min-height:370px}
+  .svc-grid,.prod-grid{gap:18px}
+}
+@media(min-width:1200px){
+  .side{border-right:1px solid var(--line);padding:36px 20px}
+  .side .logo img{height:auto;width:176px;margin:0 auto 36px}
+  .side nav a{border-radius:10px;margin-bottom:6px}
+  .side .help{padding:20px 16px;background:transparent;box-shadow:none}
+  .top{padding:30px 40px 26px}
+  .top .hello{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--acc)}
+  main{padding:0 40px 40px}
+  .home-grid{grid-template-columns:minmax(0,1fr) 264px;gap:28px}
+  .rail{gap:20px}
+  .hero .in{padding:30px;max-width:68%}
+  .hero h2{font-size:clamp(36px,3.2vw,52px)}
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:1600px){
+  .home-grid{grid-template-columns:minmax(0,1fr) 300px;gap:32px}
+  .svc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero .in{max-width:60%;padding:40px}
+}
+@media(max-width:767px){
+  .hero .in,.hero .in[class]{padding:8px 24px 28px}
+  .hero h2{font-size:38px}
+  .hero::before{background:linear-gradient(180deg,transparent 28%,var(--card) 49%)}
+  .hero p{max-width:34ch}
+}
+@media(max-width:359px){
+  main{padding-left:16px;padding-right:16px}
+  .top{padding-left:16px;padding-right:16px;gap:8px}
+  .top .logo img{width:100px}
+  .toggle button{padding:9px 11px}
+  .hero h2{font-size:34px}
+  .svc-grid,.prod-grid{grid-template-columns:1fr}
+}
