@@ -92,7 +92,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Maggilish">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261029.2">
 <script>(function(){{try{{var s=localStorage.getItem('maggilish-side');var f=document.documentElement.getAttribute('data-force');if(!f&&s)document.documentElement.setAttribute('data-side',s);}}catch(e){{}}}})();</script>
 </head>
 <body>
@@ -120,7 +120,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 </div>
 </div>
 <nav class="tabbar" aria-label="Main menu">{tabs}</nav>
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js?v=20261029.2" defer></script>
 </body>
 </html>'''
     out=os.path.join(ROOT,path); os.makedirs(os.path.dirname(out),exist_ok=True)
