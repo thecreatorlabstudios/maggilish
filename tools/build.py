@@ -34,9 +34,9 @@ def ic(n,s=22): return f'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"
 # ------------------------------------------------------------------ content
 # Times are drafts until Maggie confirms them. Prices are intentionally not shown yet.
 SERV={
- 'her':[('eye','Lashes','Lash lift &amp; tint','45 min','A natural curl and a deeper tint that lasts for weeks. No extensions, no mascara needed.','img/her-lashlift.webp'),
+ 'her':[('eye','Lashes','Lash lift &amp; tint','45 min','A natural curl and a deeper tint that lasts for weeks. No extensions, no mascara needed.','img/lash-treatment.webp'),
         ('brow','Brows','Brow shaping &amp; tint','30 min','Shaped to your face and tinted for fuller, defined brows.','img/her-brows.webp'),
-        ('spark','Combo','Lash lift + brow shape','75 min','The full eye refresh in one visit.',None),
+        ('spark','Combo','Lash lift + brow shape','75 min','The full eye refresh in one visit.','img/lash-detail.webp'),
         ('leaf','Waxing','Facial waxing','15 min','Lip and chin, gentle and quick.',None),
         ('drop','Facials','Signature facial',None,'Facials are coming soon.','img/facial.webp')],
  'his':[('brow','Brows','Brow clean-up','15 min','Tidy and natural, never over-shaped.','img/his-brows.webp'),
@@ -45,14 +45,38 @@ SERV={
         ('leaf','Waxing','Facial waxing','15 min','Brow, ear and nose, quick and clean.',None),
         ('face','Facials','Men&#8217;s facial',None,'Men&#8217;s facials are coming soon.','img/his-studio.webp')],
 }
-HERO={'her':dict(img='img/her-hero.webp',h='Lifted lashes.<br><em>Defined brows.</em>',p='Lash lifts and brow shaping with Maggie in Modesto. Facials coming soon.',greet='Hello, welcome in'),
+HERO={'her':dict(img='img/maggie-at-work.webp',h='Lifted lashes.<br><em>Defined brows.</em>',p='Lash lifts and brow shaping with Maggie in Modesto. Facials coming soon.',greet='Hello, welcome in'),
       'his':dict(img='img/his-hero.webp',h='Clean brows.<br><em>No guesswork.</em>',p='Brow clean-ups, tints and waxing, explained plainly. Men&#8217;s facials coming soon.',greet='Welcome in')}
 TIPQ={'her':['How long does a lash lift last?','Can I wear mascara after a lash lift?','How do I prep for a brow wax?'],
       'his':['How do I clean up my brows without overdoing it?','How do I stop razor bumps?','Will a lash tint look obvious?']}
 
+def meet_maggie(full=False):
+    return f'''<section class="card meet-maggie" aria-label="Meet Maggie">
+<div class="brand-photo"><img src="/assets/img/maggie-portrait.webp" alt="Maggie smiling in the Maggilish studio" width="1800" height="1200" loading="lazy"></div>
+<div class="meet-copy"><span class="lab">The face behind Maggilish</span><h2>Meet <em>Maggie.</em></h2>
+<p class="mute">Personal beauty, thoughtful care. Maggie is the person behind Maggilish in Modesto, with a focus on lifted lashes, defined brows and helping you feel at ease.</p>
+<p class="mute">From choosing a service to caring for your results at home, there is always room for your questions.</p>
+{'<p class="signature">Your glow. Her passion.</p>' if full else '<a class="btn ghost" href="/tips/">Explore care tips '+ic('arrow',16)+'</a>'}</div></section>'''
+
+CARE_TIPS=[
+ ('Before your visit','Arrive with clean lashes.','Skip mascara and eye makeup before a lash appointment. A clean starting point leaves more time for your service.'),
+ ('Make it personal','Bring your brow inspiration.','Save a photo of the look you like and share what you want to keep about your natural brows. Talk through the shape before your service begins.'),
+ ('After your visit','Keep your aftercare close.','Ask Maggie for the care instructions for your specific treatment, including when to use makeup and how to cleanse. Follow the timing you are given.'),
+ ('Between appointments','Give your lashes a gentle touch.','Avoid tugging or picking at your lashes. If you are unsure about a product or your next appointment, ask before trying something new.')]
+def tips_page():
+    cards=''.join(f'<article class="card care-tip"><span class="lab">{label}</span><h3>{title}</h3><p class="mute">{copy}</p></article>' for label,title,copy in CARE_TIPS)
+    body=f'''<section class="cs tips-page"><div class="sec-h"><div><span class="lab">Maggilish · Care notes</span><h1>Little tips. <em>Thoughtful care.</em></h1></div></div>
+{meet_maggie(True)}
+<div class="sec-h"><h2>Before &amp; after <em>your visit</em></h2></div>
+<p class="mute tips-intro">A few simple ways to get ready and care for your results. Your appointment-specific instructions always come first.</p>
+<div class="care-grid">{cards}</div>
+<figure class="care-photo brand-photo"><img src="/assets/img/lash-care.webp" alt="Maggie carefully working on a client's lashes" width="1800" height="1200" loading="lazy"><figcaption>Thoughtful details, from your appointment to your care at home.</figcaption></figure>
+<div class="sec-h"><h2>Have a question?</h2></div><p class="mute">Bring it to your visit. Maggie can walk you through your service and the aftercare that goes with it.</p></section>'''
+    page('tips/index.html','Meet Maggie &amp; care tips · Maggilish','Meet Maggie, the face behind Maggilish in Modesto, and explore simple preparation and aftercare tips.',body,'Tips')
+
 # ------------------------------------------------------------------ shell
 NAV=[('home','Home','/'),('grid','Services','/#services'),('cal','Book','/book/'),('tips','Tips','/tips/'),('bag','Shop','/shop/')]
-SOON={'Book','Tips','Shop'}
+SOON={'Book','Shop'}
 def contact_buttons(cls='btn ghost'):
     out=''
     if CONTACT['booking_url']: out+=f'<a class="btn" href="{CONTACT["booking_url"]}">{ic("cal",18)}Book online</a>'
@@ -94,7 +118,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Maggilish">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261029.2">
+<link rel="stylesheet" href="/assets/site.css?v=20261105.1">
 <script>(function(){{try{{var s=localStorage.getItem('maggilish-side');var f=document.documentElement.getAttribute('data-force');if(!f&&s)document.documentElement.setAttribute('data-side',s);}}catch(e){{}}}})();</script>
 </head>
 <body>
@@ -122,7 +146,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 </div>
 </div>
 <nav class="tabbar" aria-label="Main menu">{tabs}</nav>
-<script src="/assets/site.js?v=20261029.2" defer></script>
+<script src="/assets/site.js?v=20261105.1" defer></script>
 </body>
 </html>'''
     out=os.path.join(ROOT,path); os.makedirs(os.path.dirname(out),exist_ok=True)
@@ -141,8 +165,8 @@ def side_block(side):
     h=HERO[side]; S=SERV[side]
     cats=''.join(f'<a href="#services"><span class="c">{ic(s[0],24)}</span>{s[1]}</a>' for s in S)
     cards=''.join(svc_card(s,side) for s in S)
-    tips=''.join(f'<li><span class="q">{q}</span>{ic("arrow",18)}</li>' for q in TIPQ[side])
-    feat_img='img/studio.webp' if side=='her' else 'img/his-studio.webp'
+    tips=''.join(f'<li><a href="/tips/"><span class="q">{title}</span>{ic("arrow",18)}</a></li>' for _,title,_ in CARE_TIPS[:3])
+    feat_img='img/studio-visit.webp'
     return f'''<div class="for-{side}">
 <section class="hero" style="background-image:url(/assets/{h['img']})" aria-label="Welcome">
 <div class="in"><span class="lab">Maggilish · Modesto</span><h2 style="margin-top:8px">{h['h']}</h2><p class="mute">{h['p']}</p>
@@ -150,14 +174,17 @@ def side_block(side):
 <nav class="cats" aria-label="Service categories">{cats}</nav>
 <div class="sec-h" id="services"><h2>Services</h2><a href="/book/">Book {ic('arrow',14)}</a></div>
 <div class="svc-grid">{cards}</div>
+<div class="sec-h"><h2>Personal beauty. <em>A familiar face.</em></h2></div>
+{meet_maggie()}
+<figure class="studio-detail brand-photo"><img src="/assets/img/studio-tools.webp" alt="Lash tools and supplies arranged for a studio appointment" width="1800" height="1200" loading="lazy"><figcaption>A little look behind the scenes at Maggilish.</figcaption></figure>
 <div class="sec-h"><h2>How a visit <em>works</em></h2></div>
 <div class="steps">
 <div class="card step"><span class="n">1</span><div><h3>Pick your service</h3><p class="mute">{'Lashes, brows or both. Not sure? Maggie will help you choose.' if side=='her' else 'Brows, tint or waxing. Not sure? Maggie will tell you straight.'}</p></div></div>
 <div class="card step"><span class="n">2</span><div><h3>Book a time</h3><p class="mute">Online booking opens soon, so you can pick a time in under a minute.</p></div></div>
 <div class="card step"><span class="n">3</span><div><h3>{'Relax and glow' if side=='her' else 'In and out'}</h3><p class="mute">{'Leave with aftercare tips so your results last.' if side=='her' else 'Quick, clean and natural. Nobody will know; they will just notice.'}</p></div></div>
 </div>
-<div class="sec-h"><h2>Tips</h2><span class="soon">Coming soon</span></div>
-<div class="card tips-teaser"><p class="mute" style="font-size:14px">Quick answers from Maggie to everyday {'lash, brow and skin' if side=='her' else 'brow and skin'} questions, like:</p><ul>{tips}</ul></div>
+<div class="sec-h"><h2>Care <em>tips</em></h2><a href="/tips/">Explore tips {ic("arrow",14)}</a></div>
+<div class="card tips-teaser"><p class="mute" style="font-size:14px">A little preparation, a gentle routine and room for your questions.</p><ul>{tips}</ul></div>
 <div class="sec-h"><h2>{'Maggilish <em>Skin</em>' if side=='her' else 'Maggilish <em>Men</em>'}</h2><span class="soon">Coming soon</span></div>
 <a class="feature" href="/shop/" style="background-image:url(/assets/img/product-{'her-group' if side=='her' else 'his-group'}.webp);background-position:center 40%">
 <div class="in"><span class="lab">Our own line is on the way</span><h2>{'A gentle routine,<br><em>made for your skin.</em>' if side=='her' else 'A five-minute routine,<br><em>made for men.</em>'}</h2><p>Concept preview. Products are in development.</p></div></a>
@@ -173,9 +200,9 @@ def rail():
 <div class="card" style="padding:20px"><span class="lab">Book</span><h3 style="font-size:24px;margin-top:6px">Online booking <em>opens soon</em></h3>
 <p class="mute" style="font-size:13.5px;margin-top:8px">Lash lifts, brows and waxing first. Facials follow once Maggie&#8217;s license is in place.</p>
 <div style="display:grid;gap:8px;margin-top:14px">{contact_buttons() or '<span class="soon" style="justify-self:start">Coming soon</span>'}</div></div>
-<div class="card" style="padding:20px"><span class="lab">Tips</span>
-<ul style="list-style:none;margin-top:6px">{''.join(f'<li class="for-{s}" style="padding:10px 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:17px;line-height:1.2">{q}</li>' for s in ('her','his') for q in TIPQ[s])}</ul>
-<span class="soon" style="margin-top:10px">Coming soon</span></div>
+<div class="card" style="padding:20px"><div class="brand-photo rail-portrait"><img src="/assets/img/maggie-brand.webp" alt="Maggie with the Maggilish brand mirror" width="1800" height="1200" loading="lazy"></div><span class="lab">Tips</span>
+<ul style="list-style:none;margin-top:6px">{''.join(f'<li class="for-{s}" style="padding:10px 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:17px;line-height:1.2">{q}</li>' for s in ('her','his') for _,q,_ in CARE_TIPS[:3])}</ul>
+<a class="btn ghost" href="/tips/" style="margin-top:14px">Meet Maggie &amp; care tips</a></div>
 </aside>'''
 def home(path,side,force=None):
     body=f'''<div class="greet"><p class="mute for-her" style="font-size:13px">{HERO['her']['greet']}</p><p class="mute for-his" style="font-size:13px">{HERO['his']['greet']}</p><h1>What can I do for you?</h1></div>
@@ -207,13 +234,10 @@ def build():
     cb=contact_buttons()
     coming('book/index.html','Book','Book','Online booking <em>opens soon.</em>','Online booking <em>opens soon.</em>',
            'Pick a service and a time in under a minute. Lashes and brows first; facials follow soon.',
-           'img/her-lashlift.webp','img/his-brows.webp',
+           'img/lash-treatment.webp','img/his-brows.webp',
            (f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">{cb}</div>' if cb else '')+
            '<div class="sec-h"><h2>What you can book</h2></div>'+svc_list('her')+svc_list('his'))
-    coming('tips/index.html','Tips','Tips','Quick answers, <em>coming soon.</em>','Quick answers, <em>coming soon.</em>',
-           'Short, useful answers from Maggie to everyday questions. Searchable, one minute or less.',
-           'img/her-brows.webp','img/his-hero.webp',
-           '<div class="sec-h"><h2>First answers</h2></div>'+tip_list('her')+tip_list('his'))
+    tips_page()
     coming('shop/index.html','Shop','Shop','Maggilish Skin <em>is on the way.</em>','Maggilish Men <em>is on the way.</em>',
            'Our own line is in development. Concept previews below; products, prices and launch date to come.',
            'img/product-her-group.webp','img/product-his-group.webp',

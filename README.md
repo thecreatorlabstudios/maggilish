@@ -3,7 +3,7 @@
 App-style website for Maggilish, a lash and brow studio in Modesto, CA. One site with a side for her and a side for him.
 
 - `index.html` (her, default) and `men/` (his) are the landing pages; the For her / For him switch remembers the visitor's choice.
-- `book/`, `tips/` and `shop/` are coming-soon pages.
+- `tips/` introduces Maggie with preparation and aftercare notes; `book/` and `shop/` are coming-soon pages.
 - Phone: bottom tab bar with a raised Book button. Computer (1200px+): side menu and a right-hand panel.
 
 ## Editing
@@ -23,3 +23,6 @@ Stock photos are AI-generated and listed in `tools/photos.json`; the **Fetch pho
 
 ## Hosting
 GitHub Pages from `main` (root) with the custom domain in `CNAME`.
+
+## November studio photos
+Original studio photographs supplied by the owner are optimized as WebP assets (`maggie-*`, `lash-*`, `studio-tools`, `studio-visit`). CSS overlays use the existing porcelain, caramel and espresso palette. Portrait and care-note content is maintained in `tools/build.py`. Remaining stock imagery and product concept renders retain their existing roles.

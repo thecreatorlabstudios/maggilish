@@ -290,3 +290,44 @@ h1,h2,h3{text-wrap:balance}
 /* Keep supporting hero copy on the quiet part of the photograph. */
 .hero p{max-width:30ch;font-weight:400}
 @media(min-width:768px){.hero .in{min-width:0}.hero p{max-width:25ch}}
+
+/* Original studio photography, with porcelain and espresso brand washes. */
+.brand-photo{position:relative;overflow:hidden;background:var(--chip)}
+.brand-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(169,133,95,.12),rgba(37,24,22,.06));pointer-events:none}
+.brand-photo img{width:100%;height:100%;object-fit:cover}
+.meet-maggie{overflow:hidden;display:grid}
+.meet-maggie .brand-photo{aspect-ratio:3/2}
+.meet-maggie .brand-photo img{object-position:48% 40%}
+.meet-copy{padding:26px}
+.meet-copy h2{font-size:38px;margin:8px 0 16px}
+.meet-copy p{font-size:14px;margin-top:12px;line-height:1.75}
+.meet-copy .btn{margin-top:22px}
+.meet-copy .signature{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--acc)}
+.tips-teaser li a{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;min-height:44px}
+.tips-page{max-width:1100px;margin:auto}
+.tips-page h1{font-size:clamp(36px,5vw,56px);margin:8px 0 12px}
+.tips-intro{max-width:65ch;font-size:14px;margin-bottom:20px}
+.care-grid{display:grid;gap:16px}
+.care-tip{padding:26px;box-shadow:none}
+.care-tip h3{font-size:28px;margin:10px 0 14px}
+.care-tip p{font-size:14px;line-height:1.75}
+.care-photo{border-radius:20px;margin-top:28px;isolation:isolate}
+.care-photo img{aspect-ratio:16/9;object-position:center 48%}
+.care-photo figcaption{position:relative;z-index:1;background:var(--card);font-size:13px;padding:16px 22px;color:var(--mute)}
+.hero[style*="maggie-at-work"]{background-position:65% center}
+.feature[style*="studio-visit"]{background-position:center 32%;min-height:400px}
+@media(min-width:768px){
+ .meet-maggie{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .meet-maggie .brand-photo{aspect-ratio:auto;min-height:380px}
+ .meet-copy{padding:32px;align-self:center}
+ .care-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero[style*="maggie-at-work"]::before{background:linear-gradient(90deg,var(--bg) 10%,color-mix(in srgb,var(--bg) 95%,transparent) 32%,transparent 100%)}
+}
+@media(max-width:767px){
+ .hero[style*="maggie-at-work"]{background-position:center top;padding-top:59%}
+ .hero[style*="maggie-at-work"]::before{background:linear-gradient(180deg,transparent 20%,var(--card) 52%)}
+}
+.rail-portrait{border-radius:12px;margin-bottom:20px;aspect-ratio:3/2}
+.studio-detail{margin-top:28px;border-radius:20px;isolation:isolate}
+.studio-detail img{aspect-ratio:5/2;object-position:center 45%}
+.studio-detail figcaption{position:relative;z-index:1;background:var(--card);font-size:12px;padding:14px 20px;color:var(--mute)}
