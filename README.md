@@ -26,3 +26,6 @@ GitHub Pages from `main` (root) with the custom domain in `CNAME`.
 
 ## November studio photos
 Original studio photographs supplied by the owner are optimized as WebP assets (`maggie-*`, `lash-*`, `studio-tools`, `studio-visit`). CSS overlays use the existing porcelain, caramel and espresso palette. Portrait and care-note content is maintained in `tools/build.py`. Remaining stock imagery and product concept renders retain their existing roles.
+
+## Current logo standard - November 5, 2026
+The MAGGILISH wordmark is Nimbus Roman Regular in all caps with approximately +0.14 em tracking. Current logo assets are `assets/brand/nimbus-*`; the M/S monogram, ornaments, tagline and palette are preserved. Product concept images were refreshed to this wordmark. Previous logo and product files are retained in the owner's Drive archive, not served by this site.

@@ -118,27 +118,27 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Maggilish">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261105.1">
+<link rel="stylesheet" href="/assets/site.css?v=20261105.2">
 <script>(function(){{try{{var s=localStorage.getItem('maggilish-side');var f=document.documentElement.getAttribute('data-force');if(!f&&s)document.documentElement.setAttribute('data-side',s);}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="app">
 <aside class="side" aria-label="Main menu">
-<a class="logo" href="/"><img class="for-her" src="/assets/brand/script-light.webp" alt="Maggilish" width="200" height="74"><img class="for-his" src="/assets/brand/script-dark.webp" alt="Maggilish" width="200" height="74"></a>
+<a class="logo" href="/"><img class="for-her" src="/assets/brand/nimbus-wordmark-light.svg" alt="Maggilish" width="200" height="74"><img class="for-his" src="/assets/brand/nimbus-wordmark-dark.svg" alt="Maggilish" width="200" height="74"></a>
 <nav>{nav_side}</nav>
 {helpbox}
 </aside>
 <div class="content">
 <header class="top">
-<a class="logo" href="/" aria-label="Maggilish home"><img class="for-her" src="/assets/brand/script-light.webp" alt="Maggilish" width="103" height="38"><img class="for-his" src="/assets/brand/script-dark.webp" alt="Maggilish" width="103" height="38"></a>
+<a class="logo" href="/" aria-label="Maggilish home"><img class="for-her" src="/assets/brand/nimbus-wordmark-light.svg" alt="Maggilish" width="103" height="38"><img class="for-his" src="/assets/brand/nimbus-wordmark-dark.svg" alt="Maggilish" width="103" height="38"></a>
 <div class="hello rail-hide">Maggilish · Personal beauty, thoughtful care</div>
 <div class="actions">{toggle()}</div>
 </header>
 <main id="main">{body}
 <footer class="foot">
-<img class="for-her" src="/assets/brand/logo-light.webp" alt="Maggilish, your glow, her passion" width="120" height="118">
-<img class="for-his" src="/assets/brand/logo-dark.webp" alt="Maggilish, your glow, her passion" width="120" height="118">
+<img class="for-her" src="/assets/brand/nimbus-stacked-light.svg" alt="Maggilish, your glow, her passion" width="120" height="118">
+<img class="for-his" src="/assets/brand/nimbus-stacked-dark.svg" alt="Maggilish, your glow, her passion" width="120" height="118">
 <nav aria-label="Footer"><a href="/#services">Services</a><a href="/book/">Book</a><a href="/tips/">Tips</a><a href="/shop/">Shop</a><a href="/men/">For him</a></nav>
 <p>Lashes &amp; brows · Modesto, California</p><p>&#169; 2026 Maggilish</p>
 </footer>
@@ -146,7 +146,7 @@ def page(path,title,desc,body,active,side='her',force=None,rail=''):
 </div>
 </div>
 <nav class="tabbar" aria-label="Main menu">{tabs}</nav>
-<script src="/assets/site.js?v=20261105.1" defer></script>
+<script src="/assets/site.js?v=20261105.2" defer></script>
 </body>
 </html>'''
     out=os.path.join(ROOT,path); os.makedirs(os.path.dirname(out),exist_ok=True)
