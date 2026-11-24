@@ -3,7 +3,7 @@
 Outputs index.html, book/, tips/, shop/, 404.html (and a /men/ redirect) at the repo root (GitHub Pages)."""
 import os, json, html as _h
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V='20261123.1'   # bump to make browsers reload site.css / site.js
+V='20261124.1'   # bump to make browsers reload site.css / site.js
 
 # ------------------------------------------------------------------ settings
 SITE='https://maggilish.com'
@@ -53,21 +53,21 @@ def ic(n,s=22): return f'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"
 # ------------------------------------------------------------------ service menu (from Maggilish_Public_Service_Menu.pdf, Nov 2026)
 # (id, icon, short label, eyebrow, title, intro, photo or None, [(name, price, meta, description)], note)
 MENU=[
- ('skin','drop','Skin','Your skin. Your schedule.','Face <em>the day.</em>','Chair-based facials, personalized to your skin.','img/lash-treatment.webp',
+ ('skin','drop','Skin','Your skin. Your schedule.','Face <em>the day.</em>','Chair-based facials, personalized to your skin.','img/skin-facial.webp',
   [('The Fresh Start','$35','20 min · Cleanse + hydrate','A quick refresh with cleansing, a hydrating mask, moisturizer and SPF.'),
    ('The Glow-Up','$55','35 min · Exfoliate + refresh','Cleansing, suitable exfoliation and a customized mask, finished with moisturizer and SPF.'),
    ('The Main Event','$75','50 min · The full facial','Includes everything in The Glow-Up, plus face and neck massage for a more complete care experience.')],
   'Treatment times shown. Allow time for check-in.'),
- ('enhance','spark','Add-ons','Chosen for your skin.','Make it <em>personal.</em>',None,None,
+ ('enhance','spark','Add-ons','Chosen for your skin.','Make it <em>personal.</em>',None,'img/skin-facial-wide.webp',
   [('Pore Focus','+$15','Targeted extractions','Add dedicated time for suitable surface congestion. Includes up to 10 minutes of gentle extractions; not every blemish is suitable for removal. Available with The Glow-Up or The Main Event.'),
    ('A fresh seasonal focus','Ask','Seasonal facial','Ask about the current seasonal facial. Featured products are selected for your skin, with suitable alternatives when needed.')],
   'Any added service and price are agreed on before treatment.'),
- ('brows','brow','Brows','Definition, your way.','Find <em>your shape.</em>','Keep your character. Refine the details.','img/maggie-at-work.webp',
+ ('brows','brow','Brows','Definition, your way.','Find <em>your shape.</em>','Keep your character. Refine the details.','img/brows-shaping.webp',
   [('Brow Cleanup','$20','','Maintain an established shape with stray-hair removal and trimming as needed. A neat finish that still looks like you.'),
    ('Signature Brow Shaping','$40','','Consultation, brow mapping and customized shaping, with precise finishing to suit your features and preferred fullness.'),
    ('Brow Definition','$30','','')],
   'Not sure which to choose? Ask Maggie.'),
- ('lashes','eye','Lashes','A more defined everyday.','Lift <em>your look.</em>',None,'img/lash-detail.webp',
+ ('lashes','eye','Lashes','A more defined everyday.','Lift <em>your look.</em>',None,'img/lashes-lift.webp',
   [('Lash Lift','$65','','Enhance the lift and curl of your natural lashes. Includes a consultation, customized lift and aftercare guidance.'),
    ('Brow Lamination','$65','','Redirect brow hairs for a more uniform, styled finish. Includes consultation and aftercare guidance; shaping is separate.'),
    ('Lamination + Shaping','$75','','Pair brow lamination with personalized shaping and cleanup for a coordinated finish.'),
@@ -89,6 +89,26 @@ MENU=[
 ]
 CATS=[m for m in MENU if m[0]!='enhance']
 
+# Maggie's own photos (all authorized by Maggie for the website)
+GALLERY=[
+ ('img/brows-detail.webp','Maggie shaping a client&#8217;s brows'),
+ ('img/lashes-lift-detail.webp','Maggie setting a lash lift'),
+ ('img/makeup-facepaint-lashes.webp','Maggie applying lashes for a face-paint look'),
+ ('img/makeup-facepaint-detail.webp','Close-up of face-paint makeup detail'),
+ ('img/makeup-facepaint-finished.webp','A finished face-paint look in the barber chair'),
+ ('img/makeup-facepaint-portrait.webp','Client showing her finished face-paint makeup'),
+ ('img/makeup-on-location.webp','Maggie with her makeup station on location'),
+ ('img/makeup-kit.webp','Maggie&#8217;s professional makeup kit'),
+ ('img/makeup-event-kit.webp','Makeup station set up at an event'),
+ ('img/maggie-at-work.webp','Maggie working on a client&#8217;s lashes'),
+ ('img/lash-treatment.webp','Maggie cleansing a client&#8217;s skin'),
+ ('img/lash-detail.webp','Lash treatment in progress'),
+ ('img/studio-visit.webp','A client relaxing during a visit'),
+ ('img/studio-tools.webp','Lash and brow tools laid out for an appointment'),
+]
+def gallery():
+    return '<div class="gallery">'+''.join(f'<figure class="g brand-photo"><img src="/assets/{src}" alt="{alt}" loading="lazy"></figure>' for src,alt in GALLERY)+'</div>'
+
 def menu_section(m):
     mid,icon,short,eyebrow,title,intro,img,items,note=m
     rows=''.join(f'<li><div class="mi-h"><h4>{n}</h4><span class="price">{p}</span></div>'
@@ -106,7 +126,7 @@ def price_list():
 # ------------------------------------------------------------------ people & tips
 def meet_maggie(full=False):
     return f'''<section class="card meet-maggie" aria-label="Meet Maggie">
-<div class="brand-photo"><img src="/assets/img/maggie-headshot.webp" alt="Maggie, licensed esthetician and founder of Maggilish" width="1122" height="1402" loading="lazy"></div>
+{'<div class="brand-photo"><img src="/assets/img/maggie-headshot.webp" alt="Maggie, licensed esthetician and founder of Maggilish" width="1122" height="1402" loading="lazy"></div>' if full else '<div class="brand-photo"><img src="/assets/img/maggie-portrait.webp" alt="Maggie smiling at her station at The Gentlemen&#8217;s Barber" width="1800" height="1200" loading="lazy"></div>'}
 <div class="meet-copy"><span class="lab">Licensed esthetician · Founder</span><h2>Meet <em>Maggie.</em></h2>
 <p class="mute">Maggie is the licensed esthetician behind Maggilish in Modesto. Skin, brows, lashes and makeup, with thoughtful details and individual attention for every client.</p>
 <p class="mute">Tell Maggie your goals and preferences. Your service is tailored to your skin, features and comfort, and you leave with relevant aftercare and a clear next step.</p>
@@ -176,7 +196,7 @@ def page(path,title,desc,body,active,rail=''):
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Maggilish">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v={V}">
+<link rel="stylesheet" href="/assets/site.css?v=20261124.1{V}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -217,13 +237,16 @@ def home():
     visit=''.join(f'<div class="card step"><span class="n">{i}</span><div><h3>{t}</h3><p class="mute">{d}</p></div></div>' for i,(t,d) in enumerate(VISIT,1))
     body=f'''<div class="greet"><p class="mute" style="font-size:13px">Welcome in</p><h1>What can I do for you?</h1></div>
 <div class="home-grid"><div>
-<section class="hero" style="background-image:url(/assets/img/maggie-at-work.webp)" aria-label="Welcome">
-<div class="in"><span class="lab">Licensed esthetician · Modesto</span><h2 style="margin-top:8px">Personal care.<br><em>At your pace.</em></h2>
+<section class="lead" aria-label="Welcome">
+<div class="lead-ph"><img src="/assets/img/maggie-headshot.webp" alt="Maggie, licensed esthetician and founder of Maggilish" width="1122" height="1402" fetchpriority="high"></div>
+<div class="lead-in"><span class="lab">Licensed esthetician · Modesto</span><h2>Personal care.<br><em>At your pace.</em></h2>
 <p class="mute">Skin, brows, lashes and makeup with Maggie at {LOCATION}. All genders welcome.</p>
-<a class="btn" href="/book/">Book a visit {ic('arrow',16)}</a></div></section>
+<div class="btn-row"><a class="btn" href="/book/">Book a visit {ic('arrow',16)}</a><a class="btn ghost" href="#services">See services</a></div></div></section>
 <nav class="cats" aria-label="Service categories">{cats}</nav>
 <div class="sec-h" id="services"><h2>Services <em>&amp; pricing</em></h2><a href="/book/">Book {ic('arrow',14)}</a></div>
 <div class="menu">{menu}</div>
+<div class="sec-h" id="work"><h2>Maggie <em>at work</em></h2><a href="https://www.instagram.com/{CONTACT['instagram']}/" rel="noopener">More on Instagram {ic('arrow',14)}</a></div>
+{gallery()}
 <div class="sec-h"><h2>Personal beauty. <em>A familiar face.</em></h2></div>
 {meet_maggie()}
 <section class="band dark">
@@ -258,7 +281,7 @@ def rail():
 def book_page():
     ready=bool(CONTACT['booking_url'])
     body=f'''<section class="cs">
-<div class="cs-hero" style="background-image:url(/assets/img/studio-visit.webp)"><div class="in"><span class="lab">{LOCATION} · Modesto</span><h1>Book <em>your visit.</em></h1>
+<div class="cs-hero" style="background-image:url(/assets/img/skin-facial-wide.webp)"><div class="in"><span class="lab">{LOCATION} · Modesto</span><h1>Book <em>your visit.</em></h1>
 <p>{'Pick a service and a time online in under a minute.' if ready else 'Message Maggie on Instagram to book. Online booking is on the way.'}</p></div></div>
 <div class="btn-row">{contact_buttons()}</div>
 <p class="mute note">{ic('pin',14)} {LOCATION}, {ADDRESS}, {CITY}</p>
@@ -276,7 +299,7 @@ def shop_page():
     prods=''.join(f'<a class="card prod" href="{u or url}" rel="sponsored noopener" target="_blank"><div class="ph" style="background-image:url(/assets/{img})" role="img" aria-label="{n}"></div><h3>{n}</h3><p class="mute">Shop at Borboleta</p></a>'
                   for n,img,u in b['products'])
     body=f'''<section class="cs">
-<div class="cs-hero" style="background-image:url(/assets/img/lash-care.webp)"><div class="in"><span class="lab">Maggie&#8217;s picks</span><h1>Lash &amp; brow care, <em>chosen by Maggie.</em></h1>
+<div class="cs-hero" style="background-image:url(/assets/img/lashes-lift-detail.webp)"><div class="in"><span class="lab">Maggie&#8217;s picks</span><h1>Lash &amp; brow care, <em>chosen by Maggie.</em></h1>
 <p>Aftercare and lash and brow serums from Borboleta. Great options to explore after a lash lift or brow lamination, for longer-looking lashes and fuller-looking brows.</p></div></div>
 <section class="card shop-box"><div><span class="lab">Shop Borboleta</span><h2>Maggie&#8217;s <em>Borboleta picks</em></h2>
 <p class="disclosure">{ic('spark',16)}<span>{DISCLOSURE}</span></p></div>

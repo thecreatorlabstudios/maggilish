@@ -388,3 +388,31 @@ h1,h2,h3{text-wrap:balance}
   .cs-hero::before{background:linear-gradient(90deg,rgba(37,24,22,.94) 0%,rgba(37,24,22,.8) 38%,rgba(37,24,22,.1) 78%)}
   .cs-hero .in{align-self:center}
 }
+
+/* Lead: Maggie's portrait beside the welcome copy */
+.lead{display:grid;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.lead-ph{background:var(--chip);aspect-ratio:1/1;overflow:hidden}
+.lead-ph img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.lead-in{padding:24px 22px 28px;display:flex;flex-direction:column;justify-content:center}
+.lead-in h2{font-size:40px;line-height:1.04;letter-spacing:-.02em;margin-top:8px}
+.lead-in p{font-size:14.5px;line-height:1.7;margin-top:12px;max-width:36ch}
+/* Maggie at work gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gallery .g{border-radius:14px;aspect-ratio:3/4;margin:0}
+.gallery .g img{transition:transform .4s}
+.gallery .g:hover img{transform:scale(1.03)}
+.menu-sec.has-ph .menu-ph img{object-position:center 30%}
+.cs-hero[style*="skin-facial-wide"]{background-position:center 30%}
+.cs-hero[style*="lashes-lift-detail"]{background-position:center 35%}
+@media(min-width:768px){
+  .lead{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:460px}
+  .lead-ph{order:2;aspect-ratio:auto}
+  .lead-in{padding:40px 36px}
+  .lead-in h2{font-size:54px}
+  .gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+}
+@media(min-width:1200px){
+  .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .lead-in h2{font-size:clamp(44px,3.6vw,60px)}
+}
+@media(max-width:767px){.menu-ph{aspect-ratio:1/1}.menu-sec.has-ph .menu-ph img{object-position:center 45%}}
