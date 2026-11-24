@@ -416,3 +416,4 @@ h1,h2,h3{text-wrap:balance}
   .lead-in h2{font-size:clamp(44px,3.6vw,60px)}
 }
 @media(max-width:767px){.menu-ph{aspect-ratio:1/1}.menu-sec.has-ph .menu-ph img{object-position:center 45%}}
+.care-photo img{object-position:center 30%}

@@ -3,7 +3,7 @@
 Outputs index.html, book/, tips/, shop/, 404.html (and a /men/ redirect) at the repo root (GitHub Pages)."""
 import os, json, html as _h
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V='20261124.1'   # bump to make browsers reload site.css / site.js
+V='20261124.2'   # bump to make browsers reload site.css / site.js
 
 # ------------------------------------------------------------------ settings
 SITE='https://maggilish.com'
@@ -58,7 +58,7 @@ MENU=[
    ('The Glow-Up','$55','35 min · Exfoliate + refresh','Cleansing, suitable exfoliation and a customized mask, finished with moisturizer and SPF.'),
    ('The Main Event','$75','50 min · The full facial','Includes everything in The Glow-Up, plus face and neck massage for a more complete care experience.')],
   'Treatment times shown. Allow time for check-in.'),
- ('enhance','spark','Add-ons','Chosen for your skin.','Make it <em>personal.</em>',None,'img/skin-facial-wide.webp',
+ ('enhance','spark','Add-ons','Chosen for your skin.','Make it <em>personal.</em>',None,'img/lash-treatment.webp',
   [('Pore Focus','+$15','Targeted extractions','Add dedicated time for suitable surface congestion. Includes up to 10 minutes of gentle extractions; not every blemish is suitable for removal. Available with The Glow-Up or The Main Event.'),
    ('A fresh seasonal focus','Ask','Seasonal facial','Ask about the current seasonal facial. Featured products are selected for your skin, with suitable alternatives when needed.')],
   'Any added service and price are agreed on before treatment.'),
@@ -91,23 +91,23 @@ CATS=[m for m in MENU if m[0]!='enhance']
 
 # Maggie's own photos (all authorized by Maggie for the website)
 GALLERY=[
- ('img/brows-detail.webp','Maggie shaping a client&#8217;s brows'),
- ('img/lashes-lift-detail.webp','Maggie setting a lash lift'),
  ('img/makeup-facepaint-lashes.webp','Maggie applying lashes for a face-paint look'),
- ('img/makeup-facepaint-detail.webp','Close-up of face-paint makeup detail'),
  ('img/makeup-facepaint-finished.webp','A finished face-paint look in the barber chair'),
- ('img/makeup-facepaint-portrait.webp','Client showing her finished face-paint makeup'),
  ('img/makeup-on-location.webp','Maggie with her makeup station on location'),
- ('img/makeup-kit.webp','Maggie&#8217;s professional makeup kit'),
  ('img/makeup-event-kit.webp','Makeup station set up at an event'),
  ('img/maggie-at-work.webp','Maggie working on a client&#8217;s lashes'),
- ('img/lash-treatment.webp','Maggie cleansing a client&#8217;s skin'),
  ('img/lash-detail.webp','Lash treatment in progress'),
  ('img/studio-visit.webp','A client relaxing during a visit'),
  ('img/studio-tools.webp','Lash and brow tools laid out for an appointment'),
 ]
-def gallery():
-    return '<div class="gallery">'+''.join(f'<figure class="g brand-photo"><img src="/assets/{src}" alt="{alt}" loading="lazy"></figure>' for src,alt in GALLERY)+'</div>'
+# Shown on the Book page instead, so near-identical shots never sit on the same page
+BOOK_WORK=[
+ ('img/makeup-facepaint-portrait.webp','Client showing her finished face-paint makeup'),
+ ('img/makeup-facepaint-detail.webp','Close-up of face-paint makeup detail'),
+ ('img/makeup-kit.webp','Maggie&#8217;s professional makeup kit'),
+]
+def gallery(items=None):
+    return '<div class="gallery">'+''.join(f'<figure class="g brand-photo"><img src="/assets/{src}" alt="{alt}" loading="lazy"></figure>' for src,alt in (items or GALLERY))+'</div>'
 
 def menu_section(m):
     mid,icon,short,eyebrow,title,intro,img,items,note=m
@@ -126,7 +126,7 @@ def price_list():
 # ------------------------------------------------------------------ people & tips
 def meet_maggie(full=False):
     return f'''<section class="card meet-maggie" aria-label="Meet Maggie">
-{'<div class="brand-photo"><img src="/assets/img/maggie-headshot.webp" alt="Maggie, licensed esthetician and founder of Maggilish" width="1122" height="1402" loading="lazy"></div>' if full else '<div class="brand-photo"><img src="/assets/img/maggie-portrait.webp" alt="Maggie smiling at her station at The Gentlemen&#8217;s Barber" width="1800" height="1200" loading="lazy"></div>'}
+{'<div class="brand-photo"><img src="/assets/img/maggie-brand.webp" alt="Maggie holding the Maggilish brand mirror" width="1800" height="1200" loading="lazy"></div>' if full else '<div class="brand-photo"><img src="/assets/img/maggie-portrait.webp" alt="Maggie smiling at her station at The Gentlemen&#8217;s Barber" width="1800" height="1200" loading="lazy"></div>'}
 <div class="meet-copy"><span class="lab">Licensed esthetician · Founder</span><h2>Meet <em>Maggie.</em></h2>
 <p class="mute">Maggie is the licensed esthetician behind Maggilish in Modesto. Skin, brows, lashes and makeup, with thoughtful details and individual attention for every client.</p>
 <p class="mute">Tell Maggie your goals and preferences. Your service is tailored to your skin, features and comfort, and you leave with relevant aftercare and a clear next step.</p>
@@ -148,7 +148,7 @@ def tips_page():
 <div class="sec-h"><h2>Before &amp; after <em>your visit</em></h2></div>
 <p class="mute tips-intro">A few simple ways to get ready and care for your results. Your appointment-specific instructions always come first.</p>
 <div class="care-grid">{cards}</div>
-<figure class="care-photo brand-photo"><img src="/assets/img/lash-care.webp" alt="Maggie carefully working on a client's lashes" width="1800" height="1200" loading="lazy"><figcaption>Thoughtful details, from your appointment to your care at home.</figcaption></figure>
+<figure class="care-photo brand-photo"><img src="/assets/img/brows-detail.webp" alt="Maggie carefully shaping a client's brows" width="1800" height="1200" loading="lazy"><figcaption>Thoughtful details, from your appointment to your care at home.</figcaption></figure>
 <div class="sec-h"><h2>Have a question?</h2></div><p class="mute">Bring it to your visit or send Maggie a message. She can walk you through your service and the aftercare that goes with it.</p>
 <div class="btn-row">{contact_buttons()}</div></section>'''
     page('tips/index.html','Meet Maggie &amp; care tips · Maggilish','Meet Maggie, licensed esthetician behind Maggilish in Modesto, and explore simple preparation and aftercare tips.',body,'Tips')
@@ -272,7 +272,7 @@ def rail():
 <div class="card" style="padding:20px"><span class="lab">Book</span><h3 style="font-size:24px;margin-top:6px">Ready when <em>you are.</em></h3>
 <p class="mute" style="font-size:13.5px;margin-top:8px">{ic('pin',14)} {LOCATION}<br>{ADDRESS}, {CITY}</p>
 <div style="display:grid;gap:8px;margin-top:14px">{contact_buttons()}</div></div>
-<div class="card" style="padding:20px"><div class="brand-photo rail-portrait"><img src="/assets/img/maggie-brand.webp" alt="Maggie with the Maggilish brand mirror" width="1800" height="1200" loading="lazy"></div><span class="lab">Follow along</span>
+<div class="card" style="padding:20px"><span class="lab">Follow along</span>
 {socials()}
 <a class="btn ghost" href="/tips/" style="margin-top:14px">Meet Maggie &amp; care tips</a></div>
 </aside>'''
@@ -287,7 +287,9 @@ def book_page():
 <p class="mute note">{ic('pin',14)} {LOCATION}, {ADDRESS}, {CITY}</p>
 <p class="mute note">Makeup appointments require a 60% booking deposit. Any added service and price are agreed on before treatment.</p>
 <div class="sec-h"><h2>What you can <em>book</em></h2><a href="/#services">Full menu {ic('arrow',14)}</a></div>
-{price_list()}</section>'''
+{price_list()}
+<div class="sec-h"><h2>Recent <em>work</em></h2></div>
+{gallery(BOOK_WORK)}</section>'''
     page('book/index.html','Book · Maggilish','Book facials, brows, lash lifts, waxing and makeup with Maggie, licensed esthetician at The Gentlemen&#8217;s Barbershop in Modesto.',body,'Book')
 
 DISCLOSURE=('Maggilish is a Borboleta affiliate. If you buy through these links, Maggilish earns a commission '
