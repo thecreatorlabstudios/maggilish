@@ -9,13 +9,14 @@ V='20261123.1'   # bump to make browsers reload site.css / site.js
 SITE='https://maggilish.com'
 # Booking and phone/email: buttons only appear once a value is set.
 CONTACT={
- 'booking_url':'',          # Maggie's Setmore booking page (pending)
+ 'booking_url':'https://thegentlemensbarber.setmore.com/2YbugMNRgFuLwELtjkn4OlfJwV5zsK5Q',  # Maggie's Setmore booking page
  'instagram':'maggilish',
  'facebook':'https://www.facebook.com/profile.php?id=100063951256102',
  'tiktok':'maggilish',
  'phone':'', 'email':'',
 }
 LOCATION="The Gentlemen&#8217;s Barbershop"
+ADDRESS='3528 Oakdale Rd, Ste B'
 CITY='Modesto, California'
 
 # Borboleta affiliate program. Paste Maggie's assigned referral link into 'url'.
@@ -184,7 +185,7 @@ def page(path,title,desc,body,active,rail=''):
 <a class="logo" href="/"><img src="/assets/brand/nimbus-wordmark-gold.svg" alt="Maggilish" width="200" height="74"></a>
 <nav>{nav_side}</nav>
 <div class="help"><img src="/assets/brand/emblem-gold.webp" alt="" width="42" height="37">
-<h3>{LOCATION}</h3><p class="mute">{CITY}</p>{socials()}</div>
+<h3>{LOCATION}</h3><p class="mute">{ADDRESS}<br>{CITY}</p>{socials()}</div>
 </aside>
 <div class="content">
 <header class="top">
@@ -198,7 +199,7 @@ def page(path,title,desc,body,active,rail=''):
 <img src="/assets/brand/nimbus-stacked-gold.svg" alt="Maggilish, your glow, her passion" width="140" height="137" loading="lazy">
 <nav aria-label="Footer"><a href="/#services">Services</a><a href="/book/">Book</a><a href="/tips/">Tips</a><a href="/shop/">Shop</a></nav>
 {socials()}
-<p>Licensed esthetician · {LOCATION} · {CITY}</p><p>All genders welcome</p><p>&#169; 2026 Maggilish Brands LLC</p>
+<p>Licensed esthetician · {LOCATION}</p><p>{ADDRESS}, {CITY}</p><p>All genders welcome</p><p>&#169; 2026 Maggilish Brands LLC</p>
 </footer>
 </div>
 </div>
@@ -246,7 +247,7 @@ def home():
 def rail():
     return f'''<aside class="rail rail-only" aria-label="Quick info">
 <div class="card" style="padding:20px"><span class="lab">Book</span><h3 style="font-size:24px;margin-top:6px">Ready when <em>you are.</em></h3>
-<p class="mute" style="font-size:13.5px;margin-top:8px">{ic('pin',14)} {LOCATION}, {CITY}</p>
+<p class="mute" style="font-size:13.5px;margin-top:8px">{ic('pin',14)} {LOCATION}<br>{ADDRESS}, {CITY}</p>
 <div style="display:grid;gap:8px;margin-top:14px">{contact_buttons()}</div></div>
 <div class="card" style="padding:20px"><div class="brand-photo rail-portrait"><img src="/assets/img/maggie-brand.webp" alt="Maggie with the Maggilish brand mirror" width="1800" height="1200" loading="lazy"></div><span class="lab">Follow along</span>
 {socials()}
@@ -260,6 +261,7 @@ def book_page():
 <div class="cs-hero" style="background-image:url(/assets/img/studio-visit.webp)"><div class="in"><span class="lab">{LOCATION} · Modesto</span><h1>Book <em>your visit.</em></h1>
 <p>{'Pick a service and a time online in under a minute.' if ready else 'Message Maggie on Instagram to book. Online booking is on the way.'}</p></div></div>
 <div class="btn-row">{contact_buttons()}</div>
+<p class="mute note">{ic('pin',14)} {LOCATION}, {ADDRESS}, {CITY}</p>
 <p class="mute note">Makeup appointments require a 60% booking deposit. Any added service and price are agreed on before treatment.</p>
 <div class="sec-h"><h2>What you can <em>book</em></h2><a href="/#services">Full menu {ic('arrow',14)}</a></div>
 {price_list()}</section>'''

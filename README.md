@@ -18,7 +18,7 @@ python3 tools/build.py
 Styles: `assets/site.css`. Bump `V` in `build.py` after CSS changes so browsers reload it.
 
 ## Booking
-Set `CONTACT['booking_url']` to Maggie's Setmore page and rebuild. Until then every Book button opens Instagram (@maggilish).
+Book buttons open Maggie's Setmore page (`CONTACT['booking_url']`), with Instagram (@maggilish) as a second option. Studio: The Gentlemen's Barber, 3528 Oakdale Rd, Ste B, Modesto.
 
 ## Borboleta affiliate shop
 Set `BORBOLETA['url']` to Maggie's assigned referral link and add products as `(name, image, link)` using Borboleta's approved images and exact product names. Program rules to keep:
